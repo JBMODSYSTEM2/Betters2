@@ -1,0 +1,85 @@
+<h2>COLOMBIA</h2>
+
+<div class="table-responsive cuentas-por-equipo">
+  <table class="table table-hover table-bordered">
+    <thead class="table-danger">
+      <tr>
+        <th>Cuentas/Equipo</th>
+        <th>EDUAN</th>
+        <th>LISETH</th>
+        <th>CRISTIAN</th>
+        <th>LAURA</th>
+        <th>DANIELA</th>
+        <th>JOSE</th>
+        <th>LUCAS</th>
+        <th>LUISA</th>
+        <th>RODOLFO</th>
+        <th>LUZ</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let casa of listadoCasasColombia">
+      <tr>
+        <td>{{casa}}</td>
+        <td>SI</td>
+        <td>NO</td>
+        <td>SI</td>
+        <td>SI</td>
+        <td>SI</td>
+        <td>NO</td>
+        <td>SI</td>
+        <td>SI</td>
+        <td>SI</td>
+        <td>SI</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <div class="content">
+    <div class="table-responsive">
+      <table class="table table-hover table-bordered">
+        <thead class="table-danger">
+          <tr>
+            <th>Agente</th>
+            <th>Jugador</th>
+            <th>Sitio</th>
+            <th>Deposito inicial</th>
+            <th>Recargas</th>
+            <th>Columna</th>
+            <th>Saldo final</th>
+            <th>Puerto</th>
+            <th>Encargado</th>
+            <th>Estado de cuenta</th>
+            <th>Fecha Inicio</th>
+            <th>Fecha Limite</th>
+            <th>Duracion</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Christoffer Madsen</td>
+            <td>Christoffer Madsen</td>
+            <td>Cashpoint</td>
+            <td>4000 DKK</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>&#64;mdo</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>&#64;mdo</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>&#64;mdo</td>
+            <td class="iconos">
+              <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon" (click)="openDialog()" fontIcon="edit"></mat-icon>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+

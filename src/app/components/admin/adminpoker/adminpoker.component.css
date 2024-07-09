@@ -1,0 +1,9 @@
+.table-responsive{
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+thead tr th{
+  background-color: red;
+}

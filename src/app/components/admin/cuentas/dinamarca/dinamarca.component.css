@@ -1,0 +1,26 @@
+h2{
+  text-align: center;
+}
+
+.icon {
+  cursor: pointer;
+}
+
+.content{
+  text-align: center;
+}
+
+.cuentas-por-equipo{
+  text-align: center;
+}
+
+input {
+  text-align: right;
+}
+
+.miCampo {
+  /* width: 100px; Ajusta este valor según tus necesidades */
+  border-radius: 10px; /* Ajusta este valor según tus necesidades */
+  overflow: hidden; /* Esto es necesario para que los bordes redondeados se apliquen correctamente */
+  /* font-size: 7px; Ajusta este valor según tus necesidades */
+}

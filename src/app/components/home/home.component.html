@@ -1,0 +1,42 @@
+<!-- <header *ngIf="router.url !== '/login' && router.url !== '/regisref'"> -->
+<header>
+  <nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">BETTER$</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">{{ displayName ? displayName : 'User' }}</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Settings
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <!-- <li><a class="dropdown-item" *ngIf="router.url !== '/'" routerLink="/regisref">Registrar Referido</a></li> -->
+                <li><a class="dropdown-item" routerLink="/login" >Login</a></li>
+                <li><a class="dropdown-item" (click)="logOut()" >Log Out</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="container">
+  <div class="wrapper">
+    <div class="body">
+      <h1>Quienes somos?</h1>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et ratione iure, consequuntur minus nam nostrum alias voluptatibus dolore voluptatum mollitia atque sapiente deleniti officia fuga perferendis veritatis delectus in excepturi.
+      Fugiat libero modi perspiciatis saepe, eum quam, nostrum porro eius delectus eveniet totam non! Aperiam obcaecati delectus culpa cumque, rerum tempora error iusto pariatur ab, sunt, aliquid corporis deleniti id?
+      Aut eius recusandae impedit excepturi similique distinctio quidem exercitationem? Sint architecto dolorum sapiente dolorem quos, molestias, ea alias eos laudantium exercitationem quidem sit nisi molestiae libero quasi maiores deleniti doloribus.</p>
+    </div>
+  </div>
+</div>

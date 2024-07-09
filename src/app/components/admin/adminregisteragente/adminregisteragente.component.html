@@ -1,0 +1,53 @@
+<div class="wrapper">
+  <div class="body">
+      <div >
+          <img class="logo" src="../../../assets/img/favicon.png" alt="Login" routerLink="/dashboard">
+          <h1>REGISTRO DE AGENTE</h1>
+          <form id="registrationForm" (ngSubmit)="registrarAgente()" action="javascript:void(0)">
+            <div>
+              <h2>
+                <span class="step"></span>
+                <span class="title">Datos del Agente</span>
+              </h2>
+              <div class="form-floating mb-3">
+                <input type="text" [(ngModel)]="formDataAgente.nombre" name="nombre" class="form-control" id="floatingName" placeholder="Nombre">
+                <label for="floatingName">Nombre</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" [(ngModel)]="formDataAgente.apellido" name="apellido" class="form-control" id="floatingApellido" placeholder="Nombre">
+                <label for="floatingApellido">Apellido</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="email" [(ngModel)]="formDataAgente.email" name="email" class="form-control" id="floatingEmail" placeholder="name@example.com">
+                <label for="floatingEmail">Email</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="password" [(ngModel)]="formDataAgente.password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" [(ngModel)]="formDataAgente.telefono" name="telefono" class="form-control" id="floatingTelefono" placeholder="Telefono">
+                <label for="floatingTelefono">Telefono</label>
+              </div>
+              <div class="input-group mb-3">
+                <select [(ngModel)]="formDataAgente.pais" class="form-select" name="pais" id="inputPaises" placeholder="Select pais">
+                  <!-- <option placeholder="Select pais" selected>Select Pais...</option> -->
+                  <option value="dinamarca">Dinamarca</option>
+                  <option value="colombia">Colombia</option>
+                  <option value="brazil">Brasil</option>
+                  <option value="españa">España</option>
+                  <option value="australia">Australia</option>
+                  <option value="chile">Chile</option>
+                </select>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" name="direccion" [(ngModel)]="formDataAgente.direccion" class="form-control" id="floatingDireccion" placeholder="Direccion">
+                <label for="floatingDireccion">Direccion</label>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+          </form>
+          <a routerLink="/admin">Volver</a>
+      </div>
+  </div>
+</div>

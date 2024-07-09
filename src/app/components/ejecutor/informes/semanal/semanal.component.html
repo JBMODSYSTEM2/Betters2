@@ -1,0 +1,161 @@
+<div class="fecha">
+  <mat-form-field class="example-full-width">
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>
+
+<div class="content">
+  <div class="table-responsive">
+    <table class="table table-hover table-bordered">
+      <thead class="table-danger">
+        <tr>
+          <th>Cuenta</th>
+          <th>Propietario</th>
+          <th>Estado de la cuenta</th>
+          <th>Divisa</th>
+          <th>Saldo inicio de mes</th>
+          <th>Depositos en el mes</th>
+          <th>Total Inicio de mes</th>
+          <th>Saldo final de mes</th>
+          <th>Saldo en preapuestas</th>
+          <th>Total final de mes</th>
+          <th>Ganancia Bruta</th>
+          <th>Ganancia despues de comision</th>
+          <th>Total</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <thead>
+        <tr class="text-center">
+          <th colspan="14">COLOMBIANAS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Unibet</td>
+          <td>Mark</td>
+          <th scope="row">
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Activa</option>
+              <option value="1">Retirada</option>
+              <option value="2">Pendiente de retiro</option>
+            </select>
+          </th>
+          <td>COP</td>
+          <td><input type="text" id="numberInput1" (keyup)="formatInput($event)"></td>
+          <td><input type="text" id="numberInput2" (keyup)="formatInput($event)"></td>
+          <td>300.000</td>
+          <td><input type="text" id="numberInput3" (keyup)="formatInput($event)"></td>
+          <td><input type="text" id="numberInput4" (keyup)="formatInput($event)"></td>
+          <td>50.000</td>
+          <td>50.000</td>
+          <td>50.000</td>
+          <td>50.000</td>
+          <td class="iconos">
+            <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon" fontIcon="edit"></mat-icon>
+            <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon" fontIcon="save"></mat-icon>
+          </td>
+        </tr>
+      </tbody>
+      <thead>
+          <tr class="text-center">
+              <th colspan="14">DANESAS</th>
+          </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Unibet</td>
+          <td><a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Mark</a></td>
+          <th scope="row">
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Activa</option>
+              <option value="1">Retirada</option>
+              <option value="2">Pendiente de retiro</option>
+            </select>
+          </th>
+          <td>DKK</td>
+          <td><input type="text" id="numberInput9" (keyup)="formatInput($event)"></td>
+          <td><input type="text" id="numberInput10" (keyup)="formatInput($event)"></td>
+          <td>25.000</td>
+          <td><input type="text" id="numberInput11" (keyup)="formatInput($event)"></td>
+          <td><input type="text" id="numberInput12" (keyup)="formatInput($event)"></td>
+          <td>45.000</td>
+          <td>45.000</td>
+          <td>45.000</td>
+          <td>45.000</td>
+          <td class="iconos">
+            <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon" fontIcon="edit"></mat-icon>
+            <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon" fontIcon="save"></mat-icon>
+          </td>
+        </tr>
+        <tr>
+          <td>Unibet</td>
+          <td>Mark</td>
+          <th scope="row">
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Activa</option>
+              <option value="1">Retirada</option>
+              <option value="2">Pendiente de retiro</option>
+            </select>
+          </th>
+          <td>DKK</td>
+          <td><input type="text" id="numberInput17" (keyup)="formatInput($event)"></td>
+          <td><input type="text" id="numberInput18" (keyup)="formatInput($event)"></td>
+          <td>30.000</td>
+          <td><input type="text" id="numberInput19" (keyup)="formatInput($event)"></td>
+          <td><input type="text" id="numberInput20" (keyup)="formatInput($event)"></td>
+          <td>45.000</td>
+          <td>45.000</td>
+          <td>45.000</td>
+          <td>45.000</td>
+          <td class="iconos">
+            <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon" fontIcon="edit"></mat-icon>
+            <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon" fontIcon="save"></mat-icon>
+          </td>
+        </tr>
+      </tbody>
+      <thead>
+          <tr class="text-center">
+              <th colspan="14">EXTRANJERAS</th>
+          </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Unibet</td>
+          <td>Mark</td>
+          <th scope="row">
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Activa</option>
+              <option value="1">Retirada</option>
+              <option value="2">Pendiente de retiro</option>
+            </select>
+          </th>
+          <td>AUD</td>
+          <td><input type="text" id="numberInput25" (keyup)="formatInput($event)"></td>
+          <td><input type="text" id="numberInput26" (keyup)="formatInput($event)"></td>
+          <td>3.000</td>
+          <td><input type="text" id="numberInput27" (keyup)="formatInput($event)"></td>
+          <td><input type="text" id="numberInput28" (keyup)="formatInput($event)"></td>
+          <td>45.000</td>
+          <td>45.000</td>
+          <td>45.000</td>
+          <td>45.000</td>
+          <td class="iconos">
+            <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon" fontIcon="edit"></mat-icon>
+            <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon" fontIcon="save"></mat-icon>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="icon-download">
+  <mat-icon class="icon descarga-icono" aria-hidden="false" aria-label="Example home icon" fontIcon="download"></mat-icon>
+  <p>Descargar informe</p>
+</div>
+

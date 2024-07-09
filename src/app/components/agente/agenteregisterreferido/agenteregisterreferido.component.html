@@ -1,0 +1,70 @@
+<div class="wrapper">
+  <div class="body">
+      <div >
+          <img class="logo" src="../../../assets/img/favicon.png" alt="Login" routerLink="/dashboard">
+          <h1>REGISTRO DE REFERIDO</h1>
+
+          <form id="registrationForm" (ngSubmit)="registrarReferido()" action="javascript:void(0);">
+            <div [style.display]="showFirstForm ? 'block' : 'none'">
+              <h2>
+                <span class="step"></span>
+                <span class="title">Datos del Referido</span>
+              </h2>
+              <div class="form-floating mb-3">
+                <input type="text" [(ngModel)]="formData.nombre" name="nombre" class="form-control" id="floatingName" placeholder="Nombre" required>
+                <label for="floatingName">Nombre</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" [(ngModel)]="formData.apellido" name="apellido" class="form-control" id="floatingApellido" placeholder="Apellido" required>
+                <label for="floatingApellido">Apellido</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="email" [(ngModel)]="formData.email" name="email" class="form-control" id="floatingEmail" placeholder="name@example.com" required>
+                <label for="floatingEmail">Email</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" [(ngModel)]="formData.telefono" name="telefono" class="form-control" id="floatingTelefono" placeholder="Telefono" >
+                <label for="floatingTelefono">Telefono</label>
+              </div>
+              <div class="d-grid gap-2 mb-3">
+                <button type="button" (click)="onNextButtonClick()" class="btn btn-secondary">Siguiente</button>
+              </div>
+            </div>
+            <div id="additionalFields" [style.display]="showAdditionalFields ? 'block' : 'none'">
+              <h2>
+                <span class="step"></span>
+                <span class="title">Datos de la cuenta</span>
+              </h2>
+                <input type="checkbox" [(ngModel)]="formData.casasDeApuestas.unibet" class="btn-check" id="btn-check-1" autocomplete="off" name="unibet">
+                <label class="btn" for="btn-check-1">Unibet</label>
+
+                <input type="checkbox" [(ngModel)]="formData.casasDeApuestas.cashpoint" class="btn-check" id="btn-check-2" autocomplete="off" name="cashpoint">
+                <label class="btn" for="btn-check-2">Cashpoint</label>
+
+                <input type="checkbox" [(ngModel)]="formData.casasDeApuestas.bwin" class="btn-check" id="btn-check-3" autocomplete="off" name="bwin">
+                <label class="btn" for="btn-check-3">Bwin</label>
+
+                <input type="checkbox" [(ngModel)]="formData.casasDeApuestas.codere" class="btn-check" id="btn-check-4" autocomplete="off" name="codere">
+                <label class="btn" for="btn-check-4">Codere</label>
+
+                <input type="checkbox" [(ngModel)]="formData.casasDeApuestas.mrGreen" class="btn-check" id="btn-check-5" autocomplete="off" name="mrGreen">
+                <label class="btn" for="btn-check-5">Mr Green</label>
+
+                <input type="checkbox" [(ngModel)]="formData.casasDeApuestas.ladbroker" class="btn-check" id="btn-check-6" autocomplete="off" name="ladbroker">
+                <label class="btn" for="btn-check-6">Ladbroker</label>
+
+                <input type="checkbox" [(ngModel)]="formData.casasDeApuestas.goldenPalace" class="btn-check" id="btn-check-7" autocomplete="off" name="goldenPalace">
+                <label class="btn" for="btn-check-7">GoldenPalace</label>
+
+                <input type="checkbox" [(ngModel)]="formData.casasDeApuestas.leoVegas" class="btn-check" id="btn-check-8" autocomplete="off" name="leoVegas">
+                <label class="btn" for="btn-check-8">Leo vegas</label>
+              <div class="d-grid gap-2 mb-3">
+                <button type="button" (click)="onBackButtonClick()" class="btn btn-secondary">Atrás</button>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!formData || !alMenosUnaCasaDeApuestasSeleccionada()">Register</button>
+          </form>
+          <a routerLink="/agent">Volver al Home</a>
+      </div>
+  </div>
+</div>

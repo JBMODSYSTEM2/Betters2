@@ -1,0 +1,374 @@
+<header>
+  <nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">EJECUTOR APUESTAS</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">User</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <!-- <li class="nav-item" *ngIf="shouldShowNavbar()">
+              <a class="nav-link" *ngIf="router.url !== '/'" routerLink="/">Apuestas</a>
+            </li> -->
+            <!-- <li class="nav-item">
+              <a class="nav-link" *ngIf="router.url !== '/'" routerLink="/pokeradmin">Poker</a>
+            </li> -->
+            <!-- <li class="nav-item">
+              <a class="nav-link" *ngIf="router.url !== '/'" routerLink="/informes">Informes</a>
+            </li> -->
+            <!-- <li class="nav-item">
+              <a class="nav-link" *ngIf="router.url !== '/'" routerLink="/totalapostado">Total Apostado</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" *ngIf="router.url !== '/'" routerLink="/totalapostado">Total Apostado</a>
+            </li> -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Settings
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" *ngIf="router.url !== '/'" routerLink="/regisref">Registrar Referido</a></li>
+                <!-- <li><a class="dropdown-item" *ngIf="router.url !== '/'" routerLink="/regisagent">Registrar Agente</a></li> -->
+                <!-- <li><a class="dropdown-item" routerLink="/login">Login</a></li> -->
+                <!-- <li>
+                  <hr *ngIf="router.url !== '/'" class="dropdown-divider">
+                </li> -->
+                <li><a class="dropdown-item" *ngIf="router.url !== '/'" (click)="logOut()">Log Out</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<mat-tab-group>
+  <mat-tab label="Apuestas"><app-apuesta /></mat-tab>
+  <mat-tab label="Informe Semanal"><app-semanal-ejecutor /></mat-tab>
+  <mat-tab label="Informe Mensual"><app-mensual-ejecutor /></mat-tab>
+</mat-tab-group>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Informacion de Mark</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-floating mb-3">
+          <input type="text" name="mitID" class="form-control" id="floatingMitID" placeholder="MitID" value="Mark456" readonly>
+          <label for="floatingMitID"><span>MitID</span></label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" name="cpr" class="form-control" id="floatingCPR" placeholder="CPR" value="123456789" readonly>
+          <label for="floatingCPR"><span>CPR</span></label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="email" name="correo" class="form-control" id="floatingCorreo" placeholder="Correo" value="Mark@mark.com" readonly>
+          <label for="floatingCorreo"><span>Correo</span></label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" name="password" class="form-control" id="floatingPassword" placeholder="Password" value="Mark123" readonly>
+          <label for="floatingPassword"><span>Password</span></label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="apuesta_betburger" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Verificacion</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="apuesta">
+          <input type="number" [(ngModel)]="inputData"/>
+          <button class="btn btn-primary blue-button" [disabled]="!inputData" (click)="apuestaBetburger()" data-bs-dismiss="modal">Apostar</button>
+        </div>
+        <mat-tab-group>
+          <!-- <mat-tab label="Dos lineas">
+          </mat-tab> -->
+        </mat-tab-group>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="registrodeapuesta_betburger" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Verificacion</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+            <table class="table text-center table-bordered">
+              <thead>
+                <tr>
+                  <th>Monto</th>
+                  <th>Fecha</th>
+                  <th>acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let apuesta of getapuestasbetburger; let i = index">
+                  <td *ngIf="apuesta.id !== editingId">{{ apuesta.inputData | number}}</td>
+                  <td *ngIf="apuesta.id === editingId">
+                    <input type="number" [(ngModel)]="editingValue" appFormatNumber>
+                  </td>
+                  <td>date</td>
+                  <td *ngIf="apuesta.id !== editingId">
+                    <mat-icon class="icon icon-edit" aria-hidden="false" aria-label="Example home icon" fontIcon="edit" *ngIf="apuesta.id !== editingId" (click)="editApuesta(apuesta.id, apuesta.inputData)"></mat-icon>
+                    <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon" fontIcon="delete" (click)="deleteApuesta(apuesta.id)"></mat-icon>
+                  </td>
+                  <td *ngIf="apuesta.id === editingId">
+                    <mat-icon class="icon icon-edit" aria-hidden="false" aria-label="Example home icon" fontIcon="save" (click)="updateApuesta(apuesta.id, editingValue)"></mat-icon>
+                    <mat-icon class="icon icon-cancel" aria-hidden="false" aria-label="Example cancel icon" fontIcon="cancel" (click)="cancelEdit(apuesta.id)"></mat-icon>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="background-color: rgb(35, 183, 35); color: white;">{{ totalBetburger | number }}</td>
+                  <td colspan="2" >Total {{numberofObjects}}</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="apuesta_trademate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Verificacion</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="apuesta">
+          <input type="number" [(ngModel)]="inputData"/>
+          <button class="btn btn-primary blue-button" [disabled]="!inputData" (click)="apuestaTrademate()" data-bs-dismiss="modal">Apostar</button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="registrodeapuesta_trademate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Verificacion</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+            <table class="table text-center table-bordered">
+              <thead>
+                <tr>
+                  <th>Monto</th>
+                  <th>Fecha</th>
+                  <th>acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let apuesta of getapuestastrademate; let i = index">
+                  <td *ngIf="apuesta.id !== editingId">{{ apuesta.inputData | number}}</td>
+                  <td *ngIf="apuesta.id === editingId">
+                    <input type="number" [(ngModel)]="editingValue" appFormatNumber>
+                  </td>
+                  <td>date</td>
+                  <td *ngIf="apuesta.id !== editingId">
+                    <mat-icon class="icon icon-edit" aria-hidden="false" aria-label="Example home icon" fontIcon="edit" *ngIf="apuesta.id !== editingId" (click)="editApuesta(apuesta.id, apuesta.inputData)"></mat-icon>
+                    <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon" fontIcon="delete" (click)="deleteApuesta(apuesta.id)"></mat-icon>
+                  </td>
+                  <td *ngIf="apuesta.id === editingId">
+                    <mat-icon class="icon icon-edit" aria-hidden="false" aria-label="Example home icon" fontIcon="save" (click)="updateApuesta(apuesta.id, editingValue)"></mat-icon>
+                    <mat-icon class="icon icon-cancel" aria-hidden="false" aria-label="Example cancel icon" fontIcon="cancel" (click)="cancelEdit(apuesta.id)"></mat-icon>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="background-color: rgb(35, 183, 35); color: white;">{{ totalTrademate | number }}</td>
+                  <td colspan="2" >Total {{numberofObjects}}</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="apuesta_telegram" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Verificacion</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="apuesta">
+          <input type="number" [(ngModel)]="inputData"/>
+          <button class="btn btn-primary blue-button" [disabled]="!inputData" (click)="apuestaBetburger()" data-bs-dismiss="modal">Apostar</button>
+        </div>
+        <mat-tab-group>
+          <!-- <mat-tab label="Dos lineas">
+          </mat-tab> -->
+        </mat-tab-group>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="registrodeapuesta_telegram" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Verificacion</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+            <table class="table text-center table-bordered">
+              <thead>
+                <tr>
+                  <th>Monto</th>
+                  <th>Fecha</th>
+                  <th>acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let apuesta of getapuestasbetburger; let i = index">
+                  <td *ngIf="apuesta.id !== editingId">{{ apuesta.inputData | number}}</td>
+                  <td *ngIf="apuesta.id === editingId">
+                    <input type="number" [(ngModel)]="editingValue" appFormatNumber>
+                  </td>
+                  <td>date</td>
+                  <td *ngIf="apuesta.id !== editingId">
+                    <mat-icon class="icon icon-edit" aria-hidden="false" aria-label="Example home icon" fontIcon="edit" *ngIf="apuesta.id !== editingId" (click)="editApuesta(apuesta.id, apuesta.inputData)"></mat-icon>
+                    <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon" fontIcon="delete" (click)="deleteApuesta(apuesta.id)"></mat-icon>
+                  </td>
+                  <td *ngIf="apuesta.id === editingId">
+                    <mat-icon class="icon icon-edit" aria-hidden="false" aria-label="Example home icon" fontIcon="save" (click)="updateApuesta(apuesta.id, editingValue)"></mat-icon>
+                    <mat-icon class="icon icon-cancel" aria-hidden="false" aria-label="Example cancel icon" fontIcon="cancel" (click)="cancelEdit(apuesta.id)"></mat-icon>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="background-color: rgb(35, 183, 35); color: white;">{{ totalBetburger | number }}</td>
+                  <td colspan="2" >Total {{numberofObjects}}</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="apuesta_oddjam" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Verificacion</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="apuesta">
+          <input type="number" [(ngModel)]="inputData"/>
+          <button class="btn btn-primary blue-button" [disabled]="!inputData" (click)="apuestaTrademate()" data-bs-dismiss="modal">Apostar</button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="registrodeapuesta_oddjam" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Verificacion</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+            <table class="table text-center table-bordered">
+              <thead>
+                <tr>
+                  <th>Monto</th>
+                  <th>Fecha</th>
+                  <th>acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let apuesta of getapuestastrademate; let i = index">
+                  <td *ngIf="apuesta.id !== editingId">{{ apuesta.inputData | number}}</td>
+                  <td *ngIf="apuesta.id === editingId">
+                    <input type="number" [(ngModel)]="editingValue" appFormatNumber>
+                  </td>
+                  <td>date</td>
+                  <td *ngIf="apuesta.id !== editingId">
+                    <mat-icon class="icon icon-edit" aria-hidden="false" aria-label="Example home icon" fontIcon="edit" *ngIf="apuesta.id !== editingId" (click)="editApuesta(apuesta.id, apuesta.inputData)"></mat-icon>
+                    <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon" fontIcon="delete" (click)="deleteApuesta(apuesta.id)"></mat-icon>
+                  </td>
+                  <td *ngIf="apuesta.id === editingId">
+                    <mat-icon class="icon icon-edit" aria-hidden="false" aria-label="Example home icon" fontIcon="save" (click)="updateApuesta(apuesta.id, editingValue)"></mat-icon>
+                    <mat-icon class="icon icon-cancel" aria-hidden="false" aria-label="Example cancel icon" fontIcon="cancel" (click)="cancelEdit(apuesta.id)"></mat-icon>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="background-color: rgb(35, 183, 35); color: white;">{{ totalTrademate | number }}</td>
+                  <td colspan="2" >Total {{numberofObjects}}</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>

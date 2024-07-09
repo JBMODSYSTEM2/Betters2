@@ -1,0 +1,40 @@
+.fecha{
+  text-align: right;
+  width: 98.5%;
+}
+
+.floating-button {
+  border-radius: 100%;
+  position:fixed;
+  top: 80px;
+  right: 20px;
+}
+
+.cuotas{
+  text-align:center;
+}
+
+.green-cell {
+  background-color: rgb(99, 159, 99);
+  color: white;
+}
+
+.green-cell2{
+  background-color: rgb(99, 159, 99);
+  color: white;
+  text-align: center;
+}
+
+.red-cell {
+  background-color: rgb(222, 54, 54);
+  color: white;
+}
+
+.apuesta {
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon-edit{
+  color: #007bff;
+}

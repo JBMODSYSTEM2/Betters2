@@ -1,0 +1,16 @@
+.mi-contenedor {
+  background-color: #f0f0f0; /* Un color de fondo suave */
+  border-radius: 50px; /* Bordes redondeados*/
+  padding: 40px; /* Espacio alrededor del contenido */
+  color: #333; /* Un color de texto oscuro */
+  /* border-radius: 100%; */
+}
+
+.boton{
+  cursor: pointer;
+}
+
+.custom-snackbar {
+  background-color: #ff4081;
+  color: white;
+}

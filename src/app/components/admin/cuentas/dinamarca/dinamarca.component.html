@@ -1,0 +1,115 @@
+<h2>DINAMARCA</h2>
+
+
+<!-- <div class="table-responsive cuentas-por-equipo">
+  <table class="table table-hover table-bordered">
+    <thead class="table-danger">
+      <tr>
+        <th>Cuentas/Equipo</th>
+        <th>EDUAN</th>
+        <th>LISETH</th>
+        <th>CRISTIAN</th>
+        <th>LAURA</th>
+        <th>DANIELA</th>
+        <th>JOSE</th>
+        <th>LUCAS</th>
+        <th>RODOLFO</th>
+        <th>LUISA</th>
+        <th>LUZ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>casa</td>
+        <td>SI</td>
+        <td>NO</td>
+        <td>SI</td>
+        <td>SI</td>
+        <td>SI</td>
+        <td>NO</td>
+        <td>SI</td>
+        <td>SI</td>
+        <td>SI</td>
+        <td>SI</td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+
+
+<div>
+  <div class="content">
+    <div class="table-responsive">
+
+      <table class="table table-hover table-bordered">
+
+        <thead class="table-danger">
+          <tr>
+
+            <th>Agente</th>
+            <th>Jugador</th>
+            <th>Sitio</th>
+            <th>Depósito Inicial</th>
+            <th>Recargas</th>
+            <th>Saldo Final</th>
+            <th>Puerto</th>
+            <th>Encargado</th>
+            <th>Estado de Cuenta</th>
+            <th>Fecha de Registro</th>
+            <th>Fecha Inicio</th>
+            <th>Fecha Final</th>
+            <th>Duración</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <ng-container *ngFor="let referido of referidos">
+            <tr>
+                <td>{{ referido.agente }}</td>
+                <td>{{ referido.nombre }}</td>
+                <td>
+                  <mat-form-field>
+                    <mat-label>Casas de Apuestas</mat-label>
+                    <mat-select>
+                      <ng-container *ngFor="let casa of referido.casasDeApuestas | keyvalue">
+                        <mat-option *ngIf="casa.value === true" [value]="casa.key">
+                          {{casa.key}}
+                        </mat-option>
+                      </ng-container>
+                    </mat-select>
+                  </mat-form-field>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <mat-form-field class="miCampo">
+                    <mat-label>Puerto</mat-label>
+                    <mat-select>
+                      <mat-option *ngFor="let puerto of puertos" [value]="puerto">
+                        {{puerto}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </td>
+                <td></td>
+                <td>45</td>
+                <td>{{ referido.fecha.toDate().toLocaleDateString() }}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="iconos">
+                  <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon" fontIcon="edit"></mat-icon>
+                  <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon" fontIcon="delete"></mat-icon>
+                </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+

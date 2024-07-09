@@ -1,0 +1,31 @@
+.fecha{
+  text-align: right;
+  width: 98.5%;
+}
+
+.table-responsive{
+  width: 97%;
+  margin: auto;
+  align-items: center;
+}
+
+
+.table input {
+  text-align: right;
+}
+
+.icon {
+  cursor: pointer;
+}
+
+.iconos :nth-child(1){
+  margin-right: 12px;
+}
+
+.iconos :nth-child(2){
+  color: skyblue;
+}
+.icon-download{
+  text-align: right;
+  margin-right: 5%;
+}

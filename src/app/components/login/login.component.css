@@ -1,0 +1,32 @@
+.wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: #f5f5f5;
+}
+
+.logo{
+  height: 130px;
+  margin-top: 10px;
+}
+
+.body{
+  width: 100%;
+  max-width: 330px;
+  margin: auto;
+  padding: 30px;
+  text-align: center;
+}
+
+/* .form-floating{
+  text-align: start;
+} */
+
+img{
+  cursor: pointer;
+}
+
+mat-form-field {
+  margin-right: 12px;
+}
