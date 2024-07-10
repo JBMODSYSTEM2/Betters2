@@ -1,6 +1,10 @@
+// src/app/admin/data.service.ts
+
 import { Injectable } from '@angular/core';
-import { Firestore, doc, setDoc } from '@angular/fire/firestore';
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, sendEmailVerification, signInWithPopup, signOut, updateEmail, updateProfile } from 'firebase/auth';
+import { Firestore, doc, setDoc, collection, collectionData, updateDoc } from '@angular/fire/firestore';
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, signInWithPopup } from 'firebase/auth';
+import { Observable } from 'rxjs';
+import { Agente, Referido, Ejecutor } from '../../model/model.module';
 
 @Injectable({
   providedIn: 'root'
@@ -8,54 +12,67 @@ import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, sendEmailV
 export class DataServiceAdmin {
 
   constructor(private firestore: Firestore) { }
-  registrarYCrearAgente(email: string, password: string, formData: any){
-    const auth = getAuth()
-    createUserWithEmailAndPassword(auth, email, password)
-    .then((credenciales) => {
-      const user = credenciales.user;
-      console.log(user)
-      console.log(user.uid)
 
-      // Almacenar todos los datos del formulario en Firestore
-      const agentesRef = doc(this.firestore, 'agentes', user.uid);
-      setDoc(agentesRef, formData)
-      .then(() => {
-        console.log('Datos del agente almacenados con éxito.');
+  registrarYCrearAgente(email: string, password: string, formData: any) {
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((credenciales) => {
+        const user = credenciales.user;
+        const agentesRef = doc(this.firestore, 'agentes', user.uid);
+        setDoc(agentesRef, formData)
+          .then(() => {
+            console.log('Datos del agente almacenados con éxito.');
+          })
+          .catch((error) => {
+            console.log('Error al almacenar los datos del agente: ', error);
+          });
       })
       .catch((error) => {
-        console.log('Error al almacenar los datos del agente: ', error);
+        console.log('Error:', error.message);
       });
-    })
-    .catch((error)=>{
-      const codigoDeError = error.code;
-      const mensajeDeError = error.message;
-      console.log("--------------")
-      console.log('Codigo: ',codigoDeError)
-      console.log("--------------")
-      console.log('Mensaje: ',mensajeDeError)
-    })
   }
 
-  iniciarcongoogle(){
+  iniciarcongoogle() {
     const auth = getAuth();
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
-    .then((result) => {
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-      const user = result.user;
-      console.log(user)
-    }).catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      const email = error.email;
-      const credential = GoogleAuthProvider.credentialFromError(error);
-      console.log(error)
-    });
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log('Error:', error.message);
+      });
   }
 
-  getUid(){
+  getUid() {
     const auth = getAuth();
     return auth.currentUser.uid;
+  }
+
+  // Nuevas funciones para referidos y ejecutores
+  addReferido(referido: Referido) {
+    const referidosRef = collection(this.firestore, 'referidos');
+    return setDoc(doc(referidosRef, referido.id), referido);
+  }
+
+  getReferidos(): Observable<Referido[]> {
+    const referidosRef = collection(this.firestore, 'referidos');
+    return collectionData(referidosRef, { idField: 'id' }) as Observable<Referido[]>;
+  }
+
+  addEjecutor(ejecutor: Ejecutor) {
+    const ejecutoresRef = collection(this.firestore, 'ejecutores');
+    return setDoc(doc(ejecutoresRef, ejecutor.id), ejecutor);
+  }
+
+  getEjecutores(): Observable<Ejecutor[]> {
+    const ejecutoresRef = collection(this.firestore, 'ejecutores');
+    return collectionData(ejecutoresRef, { idField: 'id' }) as Observable<Ejecutor[]>;
+  }
+
+  asignarEjecutorAReferido(referidoId: string, ejecutorId: string) {
+    const referidoRef = doc(this.firestore, 'referidos', referidoId);
+    return updateDoc(referidoRef, { ejecutorId });
   }
 }
